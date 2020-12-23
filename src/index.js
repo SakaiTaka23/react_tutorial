@@ -6,13 +6,13 @@ import './index.css';
 
 const books = [
   {
-    id:1,
+    id: 1,
     img: 'https://m.media-amazon.com/images/I/71wudfMLJML._AC_UL320_.jpg',
     title: 'React.js & Next.js超入門',
     author: '掌田津耶乃',
   },
   {
-    id:2,
+    id: 2,
     img: 'https://m.media-amazon.com/images/I/71-wOEcxOKL._AC_UL320_.jpg',
     title: 'React開発 現場の教科書',
     author: '石橋 啓太 ',
@@ -23,20 +23,42 @@ function BookList() {
   return (
     <section className='booklist'>
       {books.map((book) => {
-        // const { img, title, author } = book;
-        return <Book key={book.id} book={book}></Book>;
+        return <Book key={book.id} {...book}></Book>;
       })}
     </section>
   );
 }
 
 const Book = (props) => {
-  const { img, title, author } = props.book;
+  console.log(props);
+  const { img, title, author } = props;
+  const clickHandelr = () => {
+    alert('you clicked the button');
+  };
+  const complexExample = () =>
+  {
+    console.log(author);
+  };
   return (
-    <article className='book'>
+    <article className='book' onMouseOver={() =>
+    {
+      console.log(author);
+     }}>
       <img src={img} alt='' />
-      <h1>{title}</h1>
+      <h1
+        onClick={() => {
+          console.log(title);
+        }}
+      >
+        {title}
+      </h1>
       <h4>{author}</h4>
+      <button type='button' onClick={clickHandelr}>
+        click this
+      </button>
+      <button type='button' onClick={() => complexExample(author)}>
+        click this too
+      </button>
     </article>
   );
 };
