@@ -6,7 +6,64 @@ import React, { useState } from 'react';
 // value, onChange
 
 const ControlledInputs = () => {
-  return <h1>controlled inputs</h1>;
+  const [firstName, setFirstName] = useState('');
+  const [email, setEmail] = useState('');
+  const [people, setPeople] = useState([]);
+
+  const handleSubimt = (e) => {
+    e.preventDefault();
+    if (firstName && email) {
+      console.log('submit the form');
+      const person = { id: new Date().getTime.toString(), firstName, email };
+      setPeople((people) => {
+        return [...people, person];
+      });
+      setFirstName('');
+      setEmail('');
+    } else {
+      console.log('empty values');
+    }
+    console.log(firstName, email);
+  };
+
+  return (
+    <>
+      <article>
+        <form className='form' onSubmit={handleSubimt}>
+          <div className='form-control'>
+            <label htmlFor='firstName'>Name : </label>
+            <input
+              type='text'
+              id='firstName'
+              name='firstName'
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+          </div>
+          <div className='form-control'>
+            <label htmlFor='email'>Email : </label>
+            <input
+              type='text'
+              id='email'
+              name='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <button type='submit'>add person</button>
+        </form>
+        {people.map((person, index) => {
+          const { id, firstName, email } = person;
+          return (
+            <div key={id} className='item'>
+              <h4>{firstName}</h4>
+              <p>{email}</p>
+            </div>
+          );
+        })}
+      </article>
+    </>
+  );
 };
 
 export default ControlledInputs;
