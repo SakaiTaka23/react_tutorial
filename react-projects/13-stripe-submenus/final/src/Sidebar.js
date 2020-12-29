@@ -5,12 +5,12 @@ import sublinks from './data';
 const Sidebar = () => {
   const { isSidebarOpen, closeSidebar } = useGlobalContext();
   return (
-    <div
+    <aside
       className={`${
         isSidebarOpen ? 'sidebar-wrapper show' : 'sidebar-wrapper'
       }`}
     >
-      <aside className='sidebar'>
+      <div className='sidebar'>
         <button className='close-btn' onClick={closeSidebar}>
           <FaTimes />
         </button>
@@ -35,8 +35,8 @@ const Sidebar = () => {
             );
           })}
         </div>
-      </aside>
-    </div>
+      </div>
+    </aside>
   );
 };
 
