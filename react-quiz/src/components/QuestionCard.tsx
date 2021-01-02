@@ -17,6 +17,7 @@ const QuestonCard: React.FC<Props> = ({
   questionNr,
   totalQuestions,
 }) => {
+    console.log(question,answers)
   return (
     <div>
       <p className='number'>
