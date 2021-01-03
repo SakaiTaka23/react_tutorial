@@ -16,7 +16,7 @@ const Tours: React.FC<ToursProps> = (props) => {
     <>
       <h1>this is tours component</h1>
       {props.tours.map((tour) => {
-        return <Tour key={tour.id} />;
+        return <Tour key={tour.id} {...tour} />;
       })}
     </>
   );
