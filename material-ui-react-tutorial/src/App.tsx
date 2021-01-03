@@ -12,6 +12,13 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { blue, green } from '@material-ui/core/colors';
 
+import 'fontsource-roboto';
+
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+
 const useStyles = makeStyles({
   root: {
     background: 'linear-gradient(45deg,#333,#999)',
@@ -62,21 +69,46 @@ function CheckboxExample(): JSX.Element {
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div className='App'>
-        <header className='App-header'>
-          <ButtonStyled />
-          <TextField variant='filled' color='secondary' type='time' label='The Time' />
-          <CheckboxExample />
-          <ButtonGroup variant='contained' color='primary' size='large'>
-            <Button startIcon={<SaveIcon />}>Save</Button>
-            <Button startIcon={<DeleteIcon />}>Delete</Button>
-          </ButtonGroup>
-          <Button startIcon={<SaveIcon />} size='large' onClick={() => alert('hi')} variant='contained' color='primary'>
-            Hello World
-          </Button>
-          <img src={logo} className='App-logo' alt='logo' />
-        </header>
-      </div>
+      <Container maxWidth='sm'>
+        <div className='App'>
+          <header className='App-header'>
+            <Typography variant='h1' component='div'>
+              Welcome to MUI
+            </Typography>
+            <Typography variant='subtitle1'>Welcome to MUI</Typography>
+            <ButtonStyled />
+
+            <Grid container spacing={4} justify='center'>
+              <Grid item>
+                <Paper style={{ height: 75, width: 50 }} />
+              </Grid>
+              <Grid item>
+                <Paper style={{ height: 75, width: 50 }} />
+              </Grid>
+              <Grid item>
+                <Paper style={{ height: 75, width: 50 }} />
+              </Grid>
+            </Grid>
+
+            <TextField variant='filled' color='secondary' type='time' label='The Time' />
+            <CheckboxExample />
+            <ButtonGroup variant='contained' color='primary' size='large'>
+              <Button startIcon={<SaveIcon />}>Save</Button>
+              <Button startIcon={<DeleteIcon />}>Delete</Button>
+            </ButtonGroup>
+            <Button
+              startIcon={<SaveIcon />}
+              size='large'
+              onClick={() => alert('hi')}
+              variant='contained'
+              color='primary'
+            >
+              Hello World
+            </Button>
+            <img src={logo} className='App-logo' alt='logo' />
+          </header>
+        </div>
+      </Container>
     </ThemeProvider>
   );
 }
