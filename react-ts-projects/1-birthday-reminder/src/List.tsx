@@ -1,27 +1,31 @@
 import React from 'react';
 
-type Props = {
-  people: People;
+type ListProps = {
+  people: { id: number; name: string; age: number; image: string }[];
 };
 
-type People = {
-  id: number;
-  name: string;
-  age: number;
-  image: string;
-};
+// type People = {
+//   id: number;
+//   name: string;
+//   age: number;
+//   image: string;
+// };
 
-const List: React.FC<Props> = ({ people }) => {
-  const { id, name, age, image } = people;
+const List: React.FC<ListProps> = (props) => {
   return (
     <>
-      <article key={id}>
-        <img src={image} alt={name} />
-        <div>
-          <h4>{name}</h4>
-          <p>{age}years</p>
-        </div>
-      </article>
+      {props.people.map((person) => {
+        const { id, name, age, image } = person;
+        return (
+          <article key={id}>
+            <img src={image} alt={name} />
+            <div>
+              <h4>{name}</h4>
+              <p>{age}</p>
+            </div>
+          </article>
+        );
+      })}
     </>
   );
 };
