@@ -9,7 +9,8 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import TextField from '@material-ui/core/TextField';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { blue, green } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
   root: {
@@ -18,6 +19,17 @@ const useStyles = makeStyles({
     borderRadius: 15,
     color: 'white',
     padding: '0 30px',
+  },
+});
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: green[500],
+    },
+    secondary: {
+      main: blue[500],
+    },
   },
 });
 
@@ -49,21 +61,23 @@ function CheckboxExample(): JSX.Element {
 
 function App() {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <ButtonStyled />
-        <TextField variant='filled' color='secondary' type='time' label='The Time' />
-        <CheckboxExample />
-        <ButtonGroup variant='contained' color='primary' size='large'>
-          <Button startIcon={<SaveIcon />}>Save</Button>
-          <Button startIcon={<DeleteIcon />}>Delete</Button>
-        </ButtonGroup>
-        <Button startIcon={<SaveIcon />} size='large' onClick={() => alert('hi')} variant='contained' color='primary'>
-          Hello World
-        </Button>
-        <img src={logo} className='App-logo' alt='logo' />
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className='App'>
+        <header className='App-header'>
+          <ButtonStyled />
+          <TextField variant='filled' color='secondary' type='time' label='The Time' />
+          <CheckboxExample />
+          <ButtonGroup variant='contained' color='primary' size='large'>
+            <Button startIcon={<SaveIcon />}>Save</Button>
+            <Button startIcon={<DeleteIcon />}>Delete</Button>
+          </ButtonGroup>
+          <Button startIcon={<SaveIcon />} size='large' onClick={() => alert('hi')} variant='contained' color='primary'>
+            Hello World
+          </Button>
+          <img src={logo} className='App-logo' alt='logo' />
+        </header>
+      </div>
+    </ThemeProvider>
   );
 }
 
