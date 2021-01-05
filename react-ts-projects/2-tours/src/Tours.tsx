@@ -1,5 +1,7 @@
 import React from 'react';
 import Tour from './Tour';
+import 'fontsource-roboto';
+import Typography from '@material-ui/core/Typography';
 
 type ToursProps = {
   tours: {
@@ -15,7 +17,9 @@ type ToursProps = {
 const Tours: React.FC<ToursProps> = (props) => {
   return (
     <>
-      <h1>this is tours component</h1>
+      <Typography variant='h1' component='h2' gutterBottom>
+        Our Tours
+      </Typography>
       {props.tours.map((tour) => {
         return <Tour key={tour.id} {...tour} removeTour={props.removeTour} />;
       })}

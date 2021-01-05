@@ -1,3 +1,4 @@
+import { Button, Typography } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import { Loading } from './Loading';
 import Tours from './Tours';
@@ -51,10 +52,12 @@ function App() {
     return (
       <main>
         <div className='title'>
-          <h2>no tours left</h2>
-          <button className='btn' onClick={fetchTours}>
+          <Typography variant='h1' component='h2' gutterBottom>
+            No Tours Left
+          </Typography>
+          <Button variant='contained' color='primary' className='btn' onClick={fetchTours}>
             refresh
-          </button>
+          </Button>
         </div>
       </main>
     );

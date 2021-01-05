@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Button from '@material-ui/core/Button';
 
 type TourProps = {
   id: string;
@@ -19,9 +20,13 @@ const Tour: React.FC<TourProps> = (props) => {
       <h4>${price}</h4>
       <p>
         {readMore ? info : `${info.substring(0, 200)}...`}
-        <button onClick={() => setReadMore(!readMore)}> {readMore ? 'show less' : 'show more'}</button>
+        <Button variant='contained' color='primary' onClick={() => setReadMore(!readMore)}>
+          {readMore ? 'show less' : 'show more'}
+        </Button>
       </p>
-      <button onClick={() => props.removeTour(id)}>Not Interested</button>
+      <Button variant='contained' color='secondary' onClick={() => props.removeTour(id)}>
+        Not Interested
+      </Button>
     </>
   );
 };
