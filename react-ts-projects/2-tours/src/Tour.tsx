@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 type TourProps = {
   id: string;
@@ -10,14 +10,17 @@ type TourProps = {
 };
 
 const Tour: React.FC<TourProps> = (props) => {
+  const [readMore, setReadMore] = useState(false);
   const { id, name, info, image, price } = props;
   return (
     <>
       <img src={image} alt={name} />
       <h4>{name}</h4>
       <h4>${price}</h4>
-      <p>{info}</p>
-      <button>Read More</button>
+      <p>
+        {readMore ? info : `${info.substring(0, 200)}...`}
+        <button onClick={() => setReadMore(!readMore)}> {readMore ? 'show less' : 'show more'}</button>
+      </p>
       <button onClick={() => props.removeTour(id)}>Not Interested</button>
     </>
   );
