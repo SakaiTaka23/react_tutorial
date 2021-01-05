@@ -4,9 +4,23 @@ import Tours from './Tours';
 
 const url = 'https://course-api.com/react-tours-project';
 
+type Tour = {
+  id: string;
+  name: string;
+  info: string;
+  image: string;
+  price: string;
+};
+
 function App() {
   const [loading, setLoading] = useState(true);
-  const [tours, setTours] = useState([]);
+  const [tours, setTours] = useState<Tour[]>([]);
+
+  const removeTour = (id: string) => {
+    console.log(tours);
+    const newTours = tours.filter((tour) => tour.id !== id);
+    setTours(newTours);
+  };
 
   const fetchTours = async () => {
     try {
@@ -48,7 +62,7 @@ function App() {
 
   return (
     <>
-      <Tours tours={tours} />
+      <Tours tours={tours} removeTour={removeTour} />
     </>
   );
 }

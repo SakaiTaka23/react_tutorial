@@ -1,14 +1,16 @@
 import React from 'react';
 
 type TourProps = {
+  id: string;
   name: string;
   info: string;
   image: string;
   price: string;
+  removeTour: (id: string) => void;
 };
 
 const Tour: React.FC<TourProps> = (props) => {
-  const { name, info, image, price } = props;
+  const { id, name, info, image, price } = props;
   return (
     <>
       <img src={image} alt={name} />
@@ -16,7 +18,7 @@ const Tour: React.FC<TourProps> = (props) => {
       <h4>${price}</h4>
       <p>{info}</p>
       <button>Read More</button>
-      <button>Not Interested</button>
+      <button onClick={() => props.removeTour(id)}>Not Interested</button>
     </>
   );
 };
