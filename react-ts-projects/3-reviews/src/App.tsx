@@ -11,7 +11,9 @@ function App() {
   return (
     <div className='App'>
       <Typography variant='h1'>Our Reviews</Typography>
-      <Review />
+      {data.map((person) => {
+        return <Review {...person} />;
+      })}
     </div>
   );
 }
