@@ -6,16 +6,18 @@ import questions from './data';
 
 function App() {
   return (
-    <Container maxWidth='sm'>
-      <Grid item xs={6}>
-        <Paper>
+    <div className='App'>
+      <Container maxWidth='sm'>
+        <Grid item xs={6}>
           <Typography>Questions And Answers About Login</Typography>
-          {questions.map((question) => {
-            return <Question key={question.id} {...question} />;
-          })}
-        </Paper>
-      </Grid>
-    </Container>
+          <Paper variant='outlined' elevation={3}>
+            {questions.map((question) => {
+              return <Question key={question.id} {...question} />;
+            })}
+          </Paper>
+        </Grid>
+      </Container>
+    </div>
   );
 }
 
