@@ -5,15 +5,29 @@ import data from './data';
 import Typography from '@material-ui/core/Typography';
 
 function App() {
-  console.log(data);
   const [showingID, setShowingID] = useState(0);
+
+  const changePerson = (id: number, action: 'plus' | 'minus') => {
+    if (action === 'plus') {
+      setShowingID(checkNum(showingID + 1));
+    } else if (action === 'minus') {
+      setShowingID(checkNum(showingID - 1));
+    }
+  };
+
+  const checkNum = (id: number) => {
+    if (id >= 4) {
+      id = 0;
+    } else if (id <= -1) {
+      id = 3;
+    }
+    return id;
+  };
 
   return (
     <div className='App'>
       <Typography variant='h1'>Our Reviews</Typography>
-      {data.map((person) => {
-        return <Review {...person} />;
-      })}
+      <Review key={data[showingID].id} {...data[showingID]} changePerson={changePerson} />
     </div>
   );
 }

@@ -4,20 +4,21 @@ import Card from '@material-ui/core/Card';
 import React from 'react';
 
 type reviewProps = {
+  id: number;
   name: string;
   job: string;
   image: string;
   text: string;
+  changePerson: (id: number, action: 'plus' | 'minus') => void;
 };
 
 const Review: React.FC<reviewProps> = (props) => {
-  const { name, job, image, text } = props;
+  const { id, name, job, image, text, changePerson } = props;
   return (
     <>
-      <h1>this is card component</h1>
       <Card>
         <CardActionArea>
-          <img src={image} alt={name} width='30%' height='50%' />
+          <img src={image} alt={name} width='30%' height='117.34px' />
           <CardContent>
             <Typography gutterBottom variant='h5' component='h2'>
               {name}
@@ -34,11 +35,11 @@ const Review: React.FC<reviewProps> = (props) => {
         <CardActions style={{ justifyContent: 'center' }}>
           <ButtonGroup>
             <Button>
-              <ArrowBackIos />
+              <ArrowBackIos onClick={() => changePerson(id, 'minus')} />
             </Button>
             <Button>Suprive Me</Button>
             <Button>
-              <ArrowForwardIos />
+              <ArrowForwardIos onClick={() => changePerson(id, 'plus')} />
             </Button>
           </ButtonGroup>
         </CardActions>
