@@ -4,16 +4,16 @@ import Card from '@material-ui/core/Card';
 import React from 'react';
 
 type reviewProps = {
-  id: number;
   name: string;
   job: string;
   image: string;
   text: string;
-  changePerson: (id: number, action: 'plus' | 'minus') => void;
+  changePerson: (action: 'plus' | 'minus') => void;
+  showRandom: () => void;
 };
 
 const Review: React.FC<reviewProps> = (props) => {
-  const { id, name, job, image, text, changePerson } = props;
+  const { name, job, image, text, changePerson, showRandom } = props;
   return (
     <>
       <Card>
@@ -35,11 +35,11 @@ const Review: React.FC<reviewProps> = (props) => {
         <CardActions style={{ justifyContent: 'center' }}>
           <ButtonGroup>
             <Button>
-              <ArrowBackIos onClick={() => changePerson(id, 'minus')} />
+              <ArrowBackIos onClick={() => changePerson('minus')} />
             </Button>
-            <Button>Suprive Me</Button>
+            <Button onClick={() => showRandom()}>Suprive Me</Button>
             <Button>
-              <ArrowForwardIos onClick={() => changePerson(id, 'plus')} />
+              <ArrowForwardIos onClick={() => changePerson('plus')} />
             </Button>
           </ButtonGroup>
         </CardActions>
