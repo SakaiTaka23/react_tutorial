@@ -8,7 +8,7 @@ function App() {
   return (
     <div className='App'>
       <h1>Our Menu</h1>
-      <Box flexWrap='wrap'>
+      <Box display='flex' flexWrap='wrap' justifyContent='center' p={1} m={1}>
         {data.map((item) => {
           return <Menu key={item.id} {...item} />;
         })}
