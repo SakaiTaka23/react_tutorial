@@ -8,6 +8,9 @@ const useStyles = makeStyles({
   media: {
     height: 140,
   },
+  menu: {
+    textTransform: 'capitalize',
+  },
 });
 
 type MenuProps = {
@@ -25,9 +28,8 @@ const Menu: React.FC<MenuProps> = ({ title, price, img, desc }) => {
         <CardActionArea>
           <CardMedia className={classes.media} image={img} title={title} />
           <CardContent>
-            <Typography gutterBottom variant='h5' component='h2'>
-              {title}
-              {price}
+            <Typography className={classes.menu} gutterBottom variant='h5' component='h2'>
+              {title} ${price}
             </Typography>
             <Typography variant='body2' color='textSecondary' component='p'>
               {desc}
