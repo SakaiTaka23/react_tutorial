@@ -36,6 +36,10 @@ function App() {
     return <Loading />;
   }
 
+  const changeTab = (order: number) => {
+    setJobIndex(order - 1);
+  };
+
   const job = jobs[jobIndex];
   return (
     <>
@@ -43,10 +47,10 @@ function App() {
         Expirence
       </Typography>
       {jobs.map((job) => {
-        return <Tab key={job.order} company={job.company} />;
+        return <Tab key={job.order} changeTab={changeTab} {...job} />;
       })}
 
-      <Job key={job.id} {...job} />
+      <Job key={job.order} {...job} />
     </>
   );
 }
