@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
 import React from 'react';
 
 type TabProp = {
@@ -8,7 +8,15 @@ type TabProp = {
 };
 
 const Tab: React.FC<TabProp> = ({ company, order, changeTab }) => {
-  return <Button onClick={() => changeTab(order)}>{company}</Button>;
+  return (
+    <Grid container direction='column' justify='space-around' alignItems='center' spacing={4}>
+      <Grid item>
+        <Button color='primary' size='large' onClick={() => changeTab(order)}>
+          {company}
+        </Button>
+      </Grid>
+    </Grid>
+  );
 };
 
 export default Tab;

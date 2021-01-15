@@ -5,7 +5,7 @@ import { JobType } from '../App';
 const Job: React.FC<JobType> = ({ title, dates, duties, company }) => {
   return (
     <>
-      <Typography variant='h3'>{title}</Typography>
+      <Typography variant='h4'>{title}</Typography>
       <Typography>{company}</Typography>
       <div>{dates}</div>
       <ul>
