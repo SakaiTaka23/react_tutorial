@@ -1,7 +1,11 @@
 import React from 'react';
 
-const Tab = () => {
-  return <div>Tab Component</div>;
+type TabProp = {
+  company: string;
+};
+
+const Tab: React.FC<TabProp> = ({ company }) => {
+  return <div>{company}</div>;
 };
 
 export default Tab;
