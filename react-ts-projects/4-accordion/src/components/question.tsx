@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
 import AddCircleRoundedIcon from '@material-ui/icons/AddCircleRounded';
 import React, { useState } from 'react';
 
@@ -12,13 +12,17 @@ const Question: React.FC<questionProp> = (props) => {
   const [show, setShow] = useState(false);
 
   return (
-    <div>
-      <Button onClick={() => setShow(!show)}>
-        <AddCircleRoundedIcon color='secondary' />
-      </Button>
-      <h1>{title}</h1>
-      <h2>{show ? info : ''}</h2>
-    </div>
+    <Grid container direction='row'>
+      <Grid item>
+        <h1>{title}</h1>
+        <h2>{show ? info : ''}</h2>
+      </Grid>
+      <Grid item>
+        <Button onClick={() => setShow(!show)}>
+          <AddCircleRoundedIcon color='secondary' />
+        </Button>
+      </Grid>
+    </Grid>
   );
 };
 
