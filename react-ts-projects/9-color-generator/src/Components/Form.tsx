@@ -6,7 +6,7 @@ type FormProp = {
 };
 
 const Form: React.FC<FormProp> = ({ generateColor }) => {
-  const [color, setColor] = useState('#f47351');
+  const [color, setColor] = useState('');
 
   const getColor = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -14,12 +14,20 @@ const Form: React.FC<FormProp> = ({ generateColor }) => {
   };
 
   return (
-    <form onSubmit={getColor}>
-      <TextField id='color' name='color' value={color} onChange={(e) => setColor(e.target.value)} variant='outlined' />
-      <Button type='submit' color='primary' variant='contained'>
-        Submit
-      </Button>
-    </form>
+    <>
+      <form onSubmit={getColor}>
+        <TextField
+          id='color'
+          name='color'
+          placeholder='color name or code'
+          value={color}
+          onChange={(e) => setColor(e.target.value)}
+        />
+        <Button type='submit' color='primary' variant='contained'>
+          Submit
+        </Button>
+      </form>
+    </>
   );
 };
 

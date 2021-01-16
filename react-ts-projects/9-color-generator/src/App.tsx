@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import randomColor from 'randomcolor';
 import './App.css';
-import { Box, Typography } from '@material-ui/core';
+import { Box, Grid, makeStyles, Typography } from '@material-ui/core';
 import Form from './Components/Form';
 import SingleColor from './Components/SingleColor';
 
+const useStyles = makeStyles({
+  title: {
+    margin: '10px',
+  },
+});
+
 function App() {
+  const classes = useStyles();
   const [color, setColor] = useState<string[]>([]);
 
   const generateColor = (color: string) => {
     const newColor = randomColor({
-      count: 20,
+      count: 21,
       hue: color,
     });
     setColor(newColor);
@@ -22,19 +29,23 @@ function App() {
 
   return (
     <div className='App'>
-      <Box display='flex' flexDirection='row'>
-        <Box mx={5}>
-          <Typography variant='h5'>Color Generator</Typography>
+      <Box display='flex' flexDirection='row' mt={5} mb={2}>
+        <Box mx={10}>
+          <Typography className={classes.title} variant='h5'>
+            Color Generator
+          </Typography>
         </Box>
-        <Box>
+        <Box mt='10px'>
           <Form generateColor={generateColor} />
         </Box>
       </Box>
-      <Box display='flex' flexWrap='wrap'>
+      <Grid container wrap='wrap' alignItems='stretch'>
         {color.map((colorCode) => (
-          <SingleColor key={colorCode} colorCode={colorCode} />
+          <Grid item xs={4}>
+            <SingleColor key={colorCode} colorCode={colorCode} />
+          </Grid>
         ))}
-      </Box>
+      </Grid>
     </div>
   );
 }
