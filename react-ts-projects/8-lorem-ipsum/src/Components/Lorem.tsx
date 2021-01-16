@@ -1,7 +1,20 @@
 import React from 'react';
+import data from '../data';
 
-const Lorem = () => {
-  return <div>Lorem Component</div>;
+type LoremProp = {
+  generate: number;
+};
+
+const Lorem: React.FC<LoremProp> = ({ generate }) => {
+  const lorems = data.slice(0, generate);
+
+  return (
+    <ul>
+      {lorems.map((lorem, index) => {
+        return <li key={index}>{lorem}</li>;
+      })}
+    </ul>
+  );
 };
 
 export default Lorem;
