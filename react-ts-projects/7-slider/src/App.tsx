@@ -1,7 +1,7 @@
 import { Box, IconButton, Typography } from '@material-ui/core';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import People from './Components/People';
 import data from './data';
@@ -26,6 +26,13 @@ function App() {
     }
     return id;
   };
+
+  useEffect(() => {
+    let slider = setInterval(() => {
+      setShowing(checkId(showing + 1));
+    }, 9000);
+    return () => clearInterval(slider);
+  }, [showing]);
 
   return (
     <div className='App'>
