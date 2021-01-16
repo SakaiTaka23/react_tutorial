@@ -1,4 +1,4 @@
-import { Box, IconButton, Typography } from '@material-ui/core';
+import { Box, Grid, IconButton, Typography } from '@material-ui/core';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import React, { useEffect, useState } from 'react';
@@ -39,15 +39,21 @@ function App() {
       <Box mt={5} mb={3}>
         <Typography variant='h3'>Reviews</Typography>
       </Box>
-      <Box display='flex' flexDirection='row' justifyContent='center'>
-        <IconButton color='primary' onClick={() => changePeople(showing, '-')}>
-          <NavigateBeforeIcon />
-        </IconButton>
-        <People {...data[showing]} />
-        <IconButton color='primary' onClick={() => changePeople(showing, '+')}>
-          <NavigateNextIcon />
-        </IconButton>
-      </Box>
+      <Grid container direction='row' justify='center' alignItems='baseline'>
+        <Grid item xs={3} onClick={() => changePeople(showing, '-')}>
+          <IconButton color='primary'>
+            <NavigateBeforeIcon fontSize='large' />
+          </IconButton>
+        </Grid>
+        <Grid item xs={6}>
+          <People {...data[showing]} />
+        </Grid>
+        <Grid item xs={3} onClick={() => changePeople(showing, '+')}>
+          <IconButton color='primary'>
+            <NavigateNextIcon fontSize='large' />
+          </IconButton>
+        </Grid>
+      </Grid>
     </div>
   );
 }

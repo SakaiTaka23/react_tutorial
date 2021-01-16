@@ -8,6 +8,16 @@ const PeopleStyles = makeStyles({
     height: 150,
     objectFit: 'cover',
   },
+  name: {
+    textTransform: 'uppercase',
+    color: '#4dabf5',
+  },
+  title: {
+    textTransform: 'capitalize',
+  },
+  quote: {
+    color: 'gray',
+  },
 });
 
 type PeopleProp = {
@@ -23,9 +33,13 @@ const People: React.FC<PeopleProp> = ({ image, name, title, quote }) => {
   return (
     <Box>
       <img src={image} alt={name} className={classes.img} />
-      <Typography>{name}</Typography>
-      <Typography>{title}</Typography>
-      <Typography>{quote}</Typography>
+      <Typography variant='h5' className={classes.name}>
+        {name}
+      </Typography>
+      <Typography variant='h6' className={classes.title}>
+        {title}
+      </Typography>
+      <Typography className={classes.quote}>{quote}</Typography>
     </Box>
   );
 };
