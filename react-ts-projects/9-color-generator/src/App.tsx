@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import randomColor from 'randomcolor';
 import './App.css';
 import { Box, Typography } from '@material-ui/core';
@@ -6,11 +6,19 @@ import Form from './Components/Form';
 import SingleColor from './Components/SingleColor';
 
 function App() {
-  const green = randomColor({
-    count: 10,
-    hue: 'green',
-  });
-  console.log(green);
+  const [color, setColor] = useState<string[]>([]);
+
+  const generateColor = (color: string) => {
+    const newColor = randomColor({
+      count: 20,
+      hue: color,
+    });
+    setColor(newColor);
+  };
+
+  useEffect(() => {
+    generateColor('#f47351');
+  }, []);
 
   return (
     <div className='App'>
@@ -19,11 +27,13 @@ function App() {
           <Typography variant='h5'>Color Generator</Typography>
         </Box>
         <Box>
-          <Form />
+          <Form generateColor={generateColor} />
         </Box>
       </Box>
       <Box display='flex' flexWrap='wrap'>
-        <SingleColor />
+        {color.map((colorCode) => (
+          <SingleColor key={colorCode} colorCode={colorCode} />
+        ))}
       </Box>
     </div>
   );
