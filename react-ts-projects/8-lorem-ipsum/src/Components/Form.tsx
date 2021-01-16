@@ -1,3 +1,4 @@
+import { Box, Button, TextField, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
 
 type FromProp = {
@@ -24,19 +25,27 @@ const Form: React.FC<FromProp> = ({ getCount }) => {
 
   return (
     <form className='lorem-form' onSubmit={handleSubmit}>
-      <label htmlFor='amount'>paragraphs:</label>
-      <input
-        type='number'
-        name='amount'
-        id='amount'
-        min='0'
-        max='9'
-        value={count}
-        onChange={(e) => setCount(checkCount(parseInt(e.target.value)))}
-      />
-      <button type='submit' className='btn'>
-        generate
-      </button>
+      <Box display='flex' justifyContent='center'>
+        <Box>
+          <Typography variant='h6'>Paragraphs:</Typography>
+        </Box>
+        <Box mx={3}>
+          <TextField
+            type='number'
+            name='amount'
+            id='amount'
+            value={count}
+            variant='filled'
+            onChange={(e) => setCount(checkCount(parseInt(e.target.value)))}
+            style={{ paddingTop: '5px' }}
+          />
+        </Box>
+        <Box>
+          <Button type='submit' color='primary' variant='contained'>
+            generate
+          </Button>
+        </Box>
+      </Box>
     </form>
   );
 };

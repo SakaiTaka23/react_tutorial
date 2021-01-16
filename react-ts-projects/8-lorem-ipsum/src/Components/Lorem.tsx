@@ -1,3 +1,4 @@
+import { Grid } from '@material-ui/core';
 import React from 'react';
 import data from '../data';
 
@@ -9,11 +10,11 @@ const Lorem: React.FC<LoremProp> = ({ generate }) => {
   const lorems = data.slice(0, generate);
 
   return (
-    <ul>
+    <Grid container direction='column'>
       {lorems.map((lorem, index) => {
-        return <li key={index}>{lorem}</li>;
+        return <Grid key={index}>{lorem}</Grid>;
       })}
-    </ul>
+    </Grid>
   );
 };
 
