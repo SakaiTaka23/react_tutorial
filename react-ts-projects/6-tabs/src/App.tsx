@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@material-ui/core';
+import { Box, Grid, Typography } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Job from './Components/Job';
@@ -43,11 +43,13 @@ function App() {
   const job = jobs[jobIndex];
   return (
     <>
-      <Typography variant='h3' align='center'>
-        Expirence
-      </Typography>
+      <Box mt={5} mb={3}>
+        <Typography variant='h3' align='center'>
+          Expirence
+        </Typography>
+      </Box>
 
-      <Grid container spacing={2}>
+      <Grid container justify='space-around' spacing={2}>
         <Grid item xs={4}>
           {jobs.map((job) => {
             return <Tab key={job.id} changeTab={changeTab} {...job} />;
