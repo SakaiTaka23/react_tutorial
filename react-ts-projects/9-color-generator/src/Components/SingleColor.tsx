@@ -7,7 +7,14 @@ type SingleColorProp = {
 
 const SingleColor: React.FC<SingleColorProp> = ({ colorCode }) => {
   return (
-    <Paper variant='outlined' square style={{ backgroundColor: colorCode }}>
+    <Paper
+      variant='outlined'
+      square
+      style={{ backgroundColor: colorCode }}
+      onClick={() => {
+        navigator.clipboard.writeText(colorCode);
+      }}
+    >
       {colorCode}
     </Paper>
   );

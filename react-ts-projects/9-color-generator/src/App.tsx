@@ -17,7 +17,7 @@ function App() {
   };
 
   useEffect(() => {
-    generateColor('#f47351');
+    generateColor('somecolor');
   }, []);
 
   return (
