@@ -8,8 +8,8 @@ import List from './Components/List';
 
 function App() {
   return (
-    <Grid container justify='center' alignItems='center'>
-      <Grid item className='glass' xs={6}>
+    <Grid container justify='center' alignItems='center' alignContent='center'>
+      <Grid item xs={6} className='glass'>
         <Alert />
         <Typography variant='h5'>Grocery Bud</Typography>
         <Form />
