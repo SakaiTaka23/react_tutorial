@@ -20,6 +20,7 @@ const PersonProvider: React.FC = ({ children }) => {
   const [people, setPeople] = useState(data);
 
   const removePerson = (id: number) => {
+    console.log(id);
     setPeople((people) => {
       return people.filter((person) => person.id !== id);
     });
