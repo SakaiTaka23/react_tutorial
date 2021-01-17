@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
-import TodosProvider, { TodosContext } from './TodosContext';
+import { useContext } from 'react';
+import { TodosContext } from './TodosContext';
 
 const App = () => {
   const { todos, addTodo } = useContext(TodosContext);
+  console.log(todos, addTodo);
 
   return (
     <div>
@@ -16,8 +17,4 @@ const App = () => {
   );
 };
 
-export default () => (
-  <TodosProvider>
-    <App />
-  </TodosProvider>
-);
+export default App;
