@@ -1,5 +1,6 @@
 import React, { createContext, FC, useState } from 'react';
 import { GroceryContextType, item } from './types';
+import data from './mockData';
 
 const GroceryContextDefaultValue: GroceryContextType = {
   list: [],
@@ -10,7 +11,7 @@ const GroceryContextDefaultValue: GroceryContextType = {
 const GroceryContext = createContext<GroceryContextType>(GroceryContextDefaultValue);
 
 const GroceryProvider: FC = ({ children }) => {
-  const [list, setList] = useState<item[]>([{ id: '1', title: 'item' }]);
+  const [list, setList] = useState<item[]>(data);
 
   const addList = (item: string) => {
     const newItem = { id: new Date().getTime().toString(), title: item };
