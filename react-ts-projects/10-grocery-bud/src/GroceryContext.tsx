@@ -21,7 +21,7 @@ const GroceryProvider: FC = ({ children }) => {
     setList([]);
   };
 
-  return <GroceryContext.Provider value={{ list, addList, clearList }}></GroceryContext.Provider>;
+  return <GroceryContext.Provider value={{ list, addList, clearList }}>{children}</GroceryContext.Provider>;
 };
 
 export { GroceryContext, GroceryProvider };
