@@ -1,12 +1,19 @@
 import { Button, TextField } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { GroceryContext } from '../GroceryContext';
 
 const Form = () => {
+  const { addList } = useContext(GroceryContext);
   const [item, setItem] = useState('');
 
   const getItem = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(item);
+    if (item === '') {
+      console.log('item needed!');
+      return;
+    }
+    addList(item);
+    setItem('');
   };
 
   return (
