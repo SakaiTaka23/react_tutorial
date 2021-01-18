@@ -8,7 +8,6 @@ type SinglePersonProp = {
 
 const SinglePerson: React.FC<SinglePersonProp> = ({ id, name }) => {
   const { removePerson } = useContext(PersonContext);
-  console.log(removePerson);
 
   return (
     <div className='item'>

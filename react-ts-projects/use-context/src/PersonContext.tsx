@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { data } from './data';
 
-type PersonContextType = {
+type PersonContextState = {
   removePerson: (id: number) => void;
   people: {
     id: number;
@@ -9,16 +9,15 @@ type PersonContextType = {
   }[];
 };
 
-const PersonContextDefaultValues = {
+const PersonContextDefaultValues: PersonContextState = {
   removePerson: () => {},
   people: data,
 };
 
-const PersonContext = React.createContext<PersonContextType>(PersonContextDefaultValues);
+const PersonContext = React.createContext<PersonContextState>(PersonContextDefaultValues);
 
 const PersonProvider: React.FC = ({ children }) => {
   const [people, setPeople] = useState(data);
-
   const removePerson = (id: number) => {
     console.log(id);
     setPeople((people) => {
@@ -26,7 +25,7 @@ const PersonProvider: React.FC = ({ children }) => {
     });
   };
 
-  return <PersonContext.Provider value={{ removePerson, people }}>{children}</PersonContext.Provider>;
+  return <PersonContext.Provider value={{ people, removePerson }}>{children}</PersonContext.Provider>;
 };
 
 export { PersonProvider, PersonContext };
