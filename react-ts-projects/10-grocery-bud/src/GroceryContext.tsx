@@ -6,6 +6,7 @@ const GroceryContextDefaultValue: GroceryContextType = {
   list: [],
   addList: () => {},
   clearList: () => {},
+  deleteList: () => {},
 };
 
 const GroceryContext = createContext<GroceryContextType>(GroceryContextDefaultValue);
@@ -22,7 +23,12 @@ const GroceryProvider: FC = ({ children }) => {
     setList([]);
   };
 
-  return <GroceryContext.Provider value={{ list, addList, clearList }}>{children}</GroceryContext.Provider>;
+  const deleteList = (id: string) => {
+    const result = list.filter((item) => item.id !== id);
+    setList(result);
+  };
+
+  return <GroceryContext.Provider value={{ list, addList, clearList, deleteList }}>{children}</GroceryContext.Provider>;
 };
 
 export { GroceryContext, GroceryProvider };

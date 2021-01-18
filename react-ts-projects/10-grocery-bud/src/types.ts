@@ -7,4 +7,5 @@ export type GroceryContextType = {
   list: item[];
   addList: (item: string) => void;
   clearList: () => void;
+  deleteList: (id: string) => void;
 };
