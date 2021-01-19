@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { GroceryContext } from '../GroceryContext';
 
 const Alert = () => {
-  return <div>Alert</div>;
+  const { alert, alertMessage } = useContext(GroceryContext);
+
+  return alert ? <div>alert!{alertMessage}</div> : <div>no alert</div>;
 };
 
 export default Alert;
