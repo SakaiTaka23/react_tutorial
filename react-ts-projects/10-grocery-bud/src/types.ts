@@ -17,5 +17,4 @@ export type GroceryContextType = {
   addList: (item: string) => void;
   clearList: () => void;
   deleteList: (id: string) => void;
-  showAlert: (action: AlertValue) => void;
 };

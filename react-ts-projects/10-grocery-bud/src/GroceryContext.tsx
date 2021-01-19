@@ -9,7 +9,6 @@ const GroceryContextDefaultValue: GroceryContextType = {
   addList: () => {},
   clearList: () => {},
   deleteList: () => {},
-  showAlert: () => {},
 };
 
 const GroceryContext = createContext<GroceryContextType>(GroceryContextDefaultValue);
@@ -29,24 +28,27 @@ const GroceryProvider: FC = ({ children }) => {
   const addList = (item: string) => {
     const newItem = { id: new Date().getTime().toString(), title: item };
     setList([...list, newItem]);
+    showAlert(AlertValue.CREATE);
   };
 
   const clearList = () => {
     setList([]);
+    showAlert(AlertValue.CLEAR);
   };
 
   const deleteList = (id: string) => {
     const result = list.filter((item) => item.id !== id);
     setList(result);
+    showAlert(AlertValue.DELETE);
   };
 
   const showAlert = (action: AlertValue) => {
-    setAlert(true);
     setAlertMessage(action);
+    setAlert(true);
   };
 
   return (
-    <GroceryContext.Provider value={{ alert, alertMessage, list, addList, clearList, deleteList, showAlert }}>
+    <GroceryContext.Provider value={{ alert, alertMessage, list, addList, clearList, deleteList }}>
       {children}
     </GroceryContext.Provider>
   );
