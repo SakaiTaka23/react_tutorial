@@ -13,8 +13,11 @@ export type item = {
 export type GroceryContextType = {
   alert: boolean;
   alertMessage: string;
+  item: string;
   list: item[];
   addList: (item: string) => void;
   clearList: () => void;
   deleteList: (id: string) => void;
+  editItem: (id: string) => void;
+  updateItem: (item: string) => void;
 };

@@ -9,12 +9,12 @@ type ItemProp = {
 };
 
 const Item: FC<ItemProp> = ({ id, title }) => {
-  const { deleteList } = useContext(GroceryContext);
+  const { deleteList, editItem } = useContext(GroceryContext);
 
   return (
     <Box display='flex' flexDirection='row'>
       <Typography>{title}</Typography>
-      <Edit />
+      <Edit onClick={() => editItem(id)} />
       <Delete onClick={() => deleteList(id)} />
     </Box>
   );

@@ -5,10 +5,13 @@ import data from './mockData';
 const GroceryContextDefaultValue: GroceryContextType = {
   alert: false,
   alertMessage: '',
+  item: '',
   list: [],
   addList: () => {},
   clearList: () => {},
   deleteList: () => {},
+  editItem: () => {},
+  updateItem: () => {},
 };
 
 const GroceryContext = createContext<GroceryContextType>(GroceryContextDefaultValue);
@@ -17,6 +20,7 @@ const GroceryProvider: FC = ({ children }) => {
   const [alert, setAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
   const [list, setList] = useState<item[]>(data);
+  const [item, setItem] = useState('');
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -42,13 +46,24 @@ const GroceryProvider: FC = ({ children }) => {
     showAlert(AlertValue.DELETE);
   };
 
+  const editItem = (id: string) => {
+    const edit = list.find((item) => item.id === id);
+    setItem(edit?.title ?? '');
+  };
+
+  const updateItem = (item: string) => {
+    setItem(item);
+  };
+
   const showAlert = (action: AlertValue) => {
     setAlertMessage(action);
     setAlert(true);
   };
 
   return (
-    <GroceryContext.Provider value={{ alert, alertMessage, list, addList, clearList, deleteList }}>
+    <GroceryContext.Provider
+      value={{ alert, alertMessage, item, list, addList, clearList, deleteList, editItem, updateItem }}
+    >
       {children}
     </GroceryContext.Provider>
   );
