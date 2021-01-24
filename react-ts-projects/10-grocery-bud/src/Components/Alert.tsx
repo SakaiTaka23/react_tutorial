@@ -4,7 +4,7 @@ import { GroceryContext } from '../GroceryContext';
 const Alert = () => {
   const { alert, alertMessage } = useContext(GroceryContext);
 
-  return alert ? <div>alert!{alertMessage}</div> : <div>no alert</div>;
+  return alert ? <div>alert!{alertMessage}</div> : <br />;
 };
 
 export default Alert;
