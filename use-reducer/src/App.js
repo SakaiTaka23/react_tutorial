@@ -1,22 +1,38 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import './App.css';
 
+const ACTIONS = {
+  INCREMENT: 'increment',
+  DECREMENT: 'decrement',
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case ACTIONS.INCREMENT:
+      return { count: state.count + 1 };
+    case ACTIONS.DECREMENT:
+      return { count: state.count - 1 };
+    default:
+      return { count: state.count };
+  }
+};
+
 function App() {
-  const [count, setCount] = useState(0);
+  const [state, despatch] = useReducer(reducer, { count: 0 });
 
   const increment = () => {
-    setCount(count + 1);
+    despatch({ type: ACTIONS.INCREMENT });
   };
 
   const decrement = () => {
-    setCount(count - 1);
+    despatch({ type: ACTIONS.DECREMENT });
   };
 
   return (
     <div className='App'>
       <>
         <button onClick={() => decrement()}>-</button>
-        <span>{count}</span>
+        <span>{state.count}</span>
         <button onClick={() => increment()}>+</button>
       </>
     </div>
