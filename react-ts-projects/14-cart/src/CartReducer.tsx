@@ -2,6 +2,7 @@ import { Reducer } from 'react';
 
 enum CART_ACTIONS {
   CLEAR = 'clear',
+  DELETE = 'delete',
   SET = 'set',
 }
 
@@ -22,6 +23,10 @@ type CartAction =
       type: CART_ACTIONS.CLEAR;
     }
   | {
+      type: CART_ACTIONS.DELETE;
+      payload: { id: number };
+    }
+  | {
       type: CART_ACTIONS.SET;
       payload: CartState;
     };
@@ -30,6 +35,9 @@ const CartReducer: Reducer<CartState, CartAction> = (state, action) => {
   switch (action.type) {
     case CART_ACTIONS.CLEAR:
       return { ...state, items: [] };
+    case CART_ACTIONS.DELETE:
+      const newItems = state.items.filter((item) => item.id !== action.payload.id);
+      return { ...state, items: newItems };
     case CART_ACTIONS.SET:
       return { ...state, items: action.payload.items };
     default:
