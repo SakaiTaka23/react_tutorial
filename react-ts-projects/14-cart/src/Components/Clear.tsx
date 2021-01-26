@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Clear() {
+const Clear = () => {
   return <div>clear</div>;
-}
+};
 
 export default Clear;

@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Total() {
+const Total = () => {
   return <div>total</div>;
-}
+};
 
 export default Total;

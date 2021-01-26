@@ -1,13 +1,13 @@
 import React from 'react';
 import Item from './Item';
 
-function ItemList() {
+const ItemList = () => {
   return (
     <div>
-      item list
       <Item />
+      item list
     </div>
   );
-}
+};
 
 export default ItemList;

@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Nav() {
+const Nav = () => {
   return <div>nav</div>;
-}
+};
 
 export default Nav;

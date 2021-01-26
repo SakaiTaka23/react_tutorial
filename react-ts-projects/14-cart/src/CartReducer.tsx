@@ -1,7 +1,38 @@
-import React from 'react';
+import { PlaylistAddOutlined } from '@material-ui/icons';
+import React, { Reducer } from 'react';
 
-function CartReducer() {
-  return <div>cart reducer</div>;
+enum CART_ACTIONS {
+  CLEAR = 'clear',
+  SET = 'set',
 }
 
-export default CartReducer;
+type CartState = {
+  items: Item[];
+};
+
+type Item = {
+  id: number;
+  title: string;
+  price: number;
+  img: string;
+  amount: number;
+};
+
+type CartAction = {
+  type: CART_ACTIONS;
+  payload: CartState;
+};
+
+const CartReducer: Reducer<CartState, CartAction> = (state, action) => {
+  switch (action.type) {
+    case CART_ACTIONS.CLEAR:
+      return { ...state, items: [] };
+    case CART_ACTIONS.SET:
+      return { ...state, items: action.payload.items };
+    default:
+      return state;
+  }
+};
+
+export { CartReducer, CART_ACTIONS };
+export type { CartState, Item, CartAction };
