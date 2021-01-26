@@ -29,9 +29,11 @@ function App() {
     return (
       <>
         <Nav />
-        <Typography variant='h3' color='primary'>
-          YOUR BAG IS EMPTY
-        </Typography>
+        <Grid container alignItems='center' justify='center'>
+          <Typography variant='h3' color='primary'>
+            YOUR BAG IS EMPTY
+          </Typography>
+        </Grid>
       </>
     );
   }
