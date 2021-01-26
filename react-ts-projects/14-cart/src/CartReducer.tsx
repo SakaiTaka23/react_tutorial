@@ -17,10 +17,14 @@ type Item = {
   amount: number;
 };
 
-type CartAction = {
-  type: CART_ACTIONS;
-  payload: CartState;
-};
+type CartAction =
+  | {
+      type: CART_ACTIONS.CLEAR;
+    }
+  | {
+      type: CART_ACTIONS.SET;
+      payload: CartState;
+    };
 
 const CartReducer: Reducer<CartState, CartAction> = (state, action) => {
   switch (action.type) {
