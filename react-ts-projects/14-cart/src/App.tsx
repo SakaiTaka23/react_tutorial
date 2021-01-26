@@ -5,6 +5,7 @@ import ItemList from './Components/ItemList';
 import Total from './Components/Total';
 import Clear from './Components/Clear';
 import { CartContext } from './CartContext';
+import { Grid, Typography } from '@material-ui/core';
 
 function App() {
   const { cartItem } = useContext(CartContext);
@@ -14,7 +15,11 @@ function App() {
     return (
       <>
         <Nav />
-        YOUR BAG
+        <Grid container alignItems='center' justify='center'>
+          <Typography variant='h3' color='primary'>
+            YOUR BAG
+          </Typography>
+        </Grid>
         <ItemList />
         <Total />
         <Clear />
@@ -22,10 +27,12 @@ function App() {
     );
   } else {
     return (
-      <div>
+      <>
         <Nav />
-        YOUR BAG IS EMPTY
-      </div>
+        <Typography variant='h3' color='primary'>
+          YOUR BAG IS EMPTY
+        </Typography>
+      </>
     );
   }
 }
