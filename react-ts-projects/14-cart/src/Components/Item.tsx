@@ -11,8 +11,8 @@ const SingleItem: FC<Item> = ({ id, title, price, img, amount }) => {
       <h2>{title}</h2>
       <h3>{price}</h3>
       <h3>{amount}</h3>
-      <button>-</button>
-      <button>+</button>
+      <button onClick={() => CartDispatch({ type: CART_ACTIONS.SUB, payload: { id: id } })}>-</button>
+      <button onClick={() => CartDispatch({ type: CART_ACTIONS.ADD, payload: { id: id } })}>+</button>
       <button onClick={() => CartDispatch({ type: CART_ACTIONS.DELETE, payload: { id: id } })}>remove</button>
     </div>
   );
