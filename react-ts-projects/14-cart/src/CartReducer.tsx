@@ -1,5 +1,4 @@
-import { PlaylistAddOutlined } from '@material-ui/icons';
-import React, { Reducer } from 'react';
+import { Reducer } from 'react';
 
 enum CART_ACTIONS {
   CLEAR = 'clear',

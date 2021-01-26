@@ -1,4 +1,4 @@
-import { CountAction, CountState } from './types/todoType';
+import { CountAction, CountState } from './types/countType';
 
 enum ACTIONS {
   INCREMENT = 'increment',
