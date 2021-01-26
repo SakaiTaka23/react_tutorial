@@ -3,12 +3,12 @@ import { CartContext } from '../CartContext';
 
 const Nav = () => {
   const { cartItem } = useContext(CartContext);
-  const count = cartItem.items.length;
+  const amount = cartItem.items.reduce((sum, item) => sum + item.amount, 0);
 
   return (
     <nav>
       <div>Cart</div>
-      <div>{count}</div>
+      <div>{amount}</div>
     </nav>
   );
 };
