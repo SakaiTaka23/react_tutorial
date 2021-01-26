@@ -29,12 +29,26 @@ const useStyles = makeStyles({
   alert: {
     margin: '50px',
   },
+  loading: {
+    fontWeight: 'bold',
+    margin: '50px',
+  },
 });
 
 const App = () => {
   const classes = useStyles();
-  const { cartItem } = useContext(CartContext);
+  const { cartItem, isLoading } = useContext(CartContext);
   const count = cartItem.items.length;
+
+  if (isLoading) {
+    return (
+      <Grid container alignItems='center' justify='center'>
+        <Typography className={classes.loading} variant='h3' color='primary'>
+          LOADING
+        </Typography>
+      </Grid>
+    );
+  }
 
   if (count > 0) {
     return (
@@ -55,18 +69,18 @@ const App = () => {
         </Grid>
       </>
     );
-  } else {
-    return (
-      <>
-        <Nav />
-        <Grid container alignItems='center' justify='center'>
-          <Typography className={classes.alert} variant='h3' color='primary'>
-            YOUR BAG IS EMPTY
-          </Typography>
-        </Grid>
-      </>
-    );
   }
+
+  return (
+    <>
+      <Nav />
+      <Grid container alignItems='center' justify='center'>
+        <Typography className={classes.alert} variant='h3' color='primary'>
+          YOUR BAG IS EMPTY
+        </Typography>
+      </Grid>
+    </>
+  );
 };
 
 export default App;
