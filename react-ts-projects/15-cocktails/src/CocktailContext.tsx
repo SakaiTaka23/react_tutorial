@@ -15,8 +15,6 @@ const CocktailProvider: FC = ({ children }) => {
   const [search, setSearch] = useState('');
   const [cocktails, setCocktails] = useState<cocktail[]>([]);
 
-  console.log(cocktails);
-
   const fetchCocktails = async (search: string) => {
     const response = await (await fetch(url + search)).json();
     const { drinks } = response;
