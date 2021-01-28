@@ -3,6 +3,7 @@ import { CocktailContext } from '../CocktailContext';
 
 const SearchForm = () => {
   const { search, setSearch } = useContext(CocktailContext);
+  console.log(search);
 
   return (
     <form>

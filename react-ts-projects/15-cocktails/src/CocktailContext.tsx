@@ -20,17 +20,21 @@ const CocktailProvider: FC = ({ children }) => {
   const fetchCocktails = async (search: string) => {
     const response = await (await fetch(url + search)).json();
     const { drinks } = response;
-    const newCocktails: cocktail[] = drinks.map((drink: any) => {
-      const { idDrink, strDrink, strDrinkThumb, strAlcoholic, strGlass } = drink;
-      return {
-        id: idDrink,
-        name: strDrink,
-        image: strDrinkThumb,
-        info: strAlcoholic,
-        glass: strGlass,
-      };
-    });
-    setCocktails(newCocktails);
+    if (drinks) {
+      const newCocktails: cocktail[] = drinks.map((drink: any) => {
+        const { idDrink, strDrink, strDrinkThumb, strAlcoholic, strGlass } = drink;
+        return {
+          id: idDrink,
+          name: strDrink,
+          image: strDrinkThumb,
+          info: strAlcoholic,
+          glass: strGlass,
+        };
+      });
+      setCocktails(newCocktails);
+    } else {
+      setCocktails([]);
+    }
   };
 
   useEffect(() => {
