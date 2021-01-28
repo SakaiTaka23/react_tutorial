@@ -1,7 +1,14 @@
 import React from 'react';
+import CocktailCard from '../Components/CocktailCard';
+import SearchForm from '../Components/SearchForm';
 
 const Home = () => {
-  return <div>home</div>;
+  return (
+    <>
+      <SearchForm />
+      <CocktailCard />
+    </>
+  );
 };
 
 export default Home;
