@@ -23,6 +23,16 @@ img {
   padding: 50px;
 }
 
+.detail {
+  padding: 30px;
+}
+
+.detail-top {
+  margin-top: 30px;
+  max-width: '50rem';
+  margin: '40px auto 0';
+}
+
 .form {
   padding: 40px;
 }
