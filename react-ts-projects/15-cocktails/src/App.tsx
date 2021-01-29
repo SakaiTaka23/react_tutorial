@@ -18,17 +18,11 @@ function App() {
         <Router>
           <Navbar />
           <Switch>
-            <Route exact path='/'>
-              <Home />
-            </Route>
-            <Route path='/about'>
-              <About />
-            </Route>
-            <Route path='/cocktail/:id' component={SingleCocktail}></Route>
+            <Route exact path='/' component={Home} />
+            <Route path='/about' component={About} />
+            <Route path='/cocktail/:id' component={SingleCocktail} />
             <Route path='/error/id' component={IdError} />
-            <Route path='*'>
-              <Error />
-            </Route>
+            <Route path='*' component={Error} />
           </Switch>
         </Router>
       </ThemeProvider>

@@ -2,7 +2,6 @@ import { Grid, Typography } from '@material-ui/core';
 import { FC, useEffect, useState } from 'react';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { useStyles } from '../Theme';
-import IdError from './IdError';
 
 type SingleCocktailProps = {};
 type Props = SingleCocktailProps &
@@ -41,7 +40,6 @@ const SingleCocktail: FC<Props> = (props) => {
         setDetail(newDetail);
       } else {
         console.log('id error');
-        return <IdError />;
       }
     };
     fetchDetails();
