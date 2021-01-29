@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 import { cocktail } from '../Types/cocktailType';
 
 const CocktailCard: FC<cocktail> = ({ id, name, image, info, glass }) => {
@@ -8,7 +9,7 @@ const CocktailCard: FC<cocktail> = ({ id, name, image, info, glass }) => {
       <div>{name}</div>
       <div>{glass}</div>
       <p>{info}</p>
-      <button>Detail {id}</button>
+      <Link to={`/cocktail/${id}`}>detail</Link>
     </div>
   );
 };
