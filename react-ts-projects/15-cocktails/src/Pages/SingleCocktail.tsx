@@ -3,11 +3,9 @@ import { FC, useEffect, useState } from 'react';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { useStyles } from '../Theme';
 
-type SingleCocktailProps = {};
-type Props = SingleCocktailProps &
-  RouteComponentProps<{
-    id: string;
-  }>;
+type SingleCocktailProps = RouteComponentProps<{
+  id: string;
+}>;
 
 type Detail = {
   name: string;
@@ -19,7 +17,7 @@ type Detail = {
 
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
 
-const SingleCocktail: FC<Props> = (props) => {
+const SingleCocktail: FC<SingleCocktailProps> = (props) => {
   const classes = useStyles();
   const [detail, setDetail] = useState<Detail>({ name: '', category: '', alcoholic: '', glass: '', img: '' });
   const id = props.match.params.id;
