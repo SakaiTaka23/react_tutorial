@@ -24,3 +24,10 @@ https://www.youtube.com/watch?v=F2JCjVSZlG0
 **typescript tutorial**
 
 https://www.youtube.com/watch?v=BwuLxPH8IDs
+
+**next crash corse**
+
+https://www.youtube.com/watch?v=mTz0GXj8NN0
+
+**nextjs blog**
+https://nextjs.org/learn/basics/create-nextjs-app
